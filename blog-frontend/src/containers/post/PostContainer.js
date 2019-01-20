@@ -4,6 +4,8 @@ import PostBody from 'components/post/PostBody';
 import * as postActions from 'store/modules/post';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import removeMd from 'remove-markdown';
+import { Helmet } from 'react-helmet';
 
 class Post extends Component {
   initialize = async () => {
@@ -24,12 +26,16 @@ class Post extends Component {
 
     if (loading) return null; // 로딩 중일때는 아무것도 보여주지 않음
 
-    const {
-      title, body, publishedDate, tags,
-    } = post.toJS();
+    const { title, body, publishedDate, tags } = post.toJS();
 
     return (
       <div>
+        {/* body 값이 있을 때문 Helmet 설정 */ body && (
+          <Helmet>
+            <title>{title}</title>
+            <meta name="description" contect={removeMd(body).slice(0, 200)} />
+          </Helmet>
+        )}
         <PostInfo title={title} publishedDate={publishedDate} tags={tags} />
         <PostBody body={body} />
       </div>

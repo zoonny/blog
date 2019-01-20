@@ -15,6 +15,12 @@ git commit -m "save untrack";
 
 yarn eject;
 
+## error : Cannot find module '@babel/plugin-transform-react-jsx'
+
+rm -rf yarn.lock
+rm -rf node_modules
+yarn
+
 ## install library
 
 yarn add node-sass sass-loader classnames;

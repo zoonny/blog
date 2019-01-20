@@ -29,7 +29,7 @@ export default function asyncComponent(getComponent) {
     return getComponent().then(({ default: Component }) => {
       AsyncComponent.Component = Component;
     });
-
-    return AsyncComponent;
   };
+
+  return AsyncComponent;
 }

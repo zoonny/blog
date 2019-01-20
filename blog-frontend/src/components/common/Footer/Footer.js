@@ -5,13 +5,13 @@ import styles from './Footer.scss';
 
 const cx = classNames.bind(styles);
 
-const Footer = ({ onLoginClick }) => (
+const Footer = ({ onLoginClick, logged }) => (
   <footer className={cx('footer')}>
     <Link to="/" className={cx('brand')}>
       reactblog
     </Link>
     <div onClick={onLoginClick} className={cx('admin-login')}>
-      관리자 로그인
+      {logged ? '로그아웃' : '관리자 로그인'}
     </div>
   </footer>
 );
