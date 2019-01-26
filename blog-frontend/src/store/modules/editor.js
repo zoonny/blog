@@ -24,7 +24,7 @@ const initialState = Map({
   title: '',
   markdown: '',
   tags: '',
-  postId: null
+  postId: null,
 });
 
 // reducer
@@ -50,7 +50,7 @@ export default handleActions(
       },
       onCancel: (state, action) => {
         console.log('CANCEL!!!');
-      }
+      },
     }),
     ...pender({
       type: GET_POST,
@@ -60,8 +60,8 @@ export default handleActions(
           .set('title', title)
           .set('markdown', body)
           .set('tags', tags.join(', ')); // 배열 -> ,로 구분된 문자열
-      }
-    })
+      },
+    }),
   },
-  initialState
+  initialState,
 );
